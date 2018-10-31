@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TF Image Recognition</title>
+</head>
+<body>
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="text-center col-md-12">
+                <img id="selected-image" height="400" width="400" src="placeholder-image.png"/>
+            </div>
+            <div class="col-md-12">
+                <input id="image-selector" type="file">
+                <button class="btn btn-default" id="predict-button" style="color:black; ">Predict</button>
+            </div>
+            <div class="col-md-12">
+                <p>Type: <span id="prediction"></span></p>
+                <p>Confidence Score: <span id="value"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        let base64Image;
+        $("#image-selector").change(function() {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                let dataURL = reader.result;
+                $('#selected-image').attr("src", dataURL);
+                base64Image = dataURL.replace("data:image/jpeg;base64,","");
+
+                console.log($("#image-selector")[0].files[0].name);
+            }
+            reader.readAsDataURL($("#image-selector")[0].files[0]);
+            $("#prediction").text("");
+            $("#value").text("");
+        });
+
+        $("#predict-button").click(function(){
+            let message = {
+                image: base64Image
+            }
+            console.log(message);
+            $.post("http://127.0.0.1:5000/predict", JSON.stringify(message), function(response){
+                $("#prediction").text(response.prediction.prediction);
+                $("#value").text(response.prediction.value);
+                console.log(response);
+            });
+        });
+    </script>
+</body>
+</html>
