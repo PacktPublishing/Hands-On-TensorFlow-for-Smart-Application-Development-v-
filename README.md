@@ -11,12 +11,12 @@ All the code and supporting files for this course are available on GitHub at: ht
 <H2>What You Will Learn</H2>
 <DIV class=book-info-will-learn-text>
 <UL>
-<LI>Get grips on various NLP techniques while building an intelligent Chatbot using TensorFlow to help you transform online businesses 
-<LI>A solid understanding of natural language processing intuitions and its functioning 
-<LI>Optimize performance and efficiency by implementing end to end deep learning models 
-<LI>Working on sequence-to-sequence models (used in translation) that reads one sequence and produces another 
-<LI>Using bag-of-words model as a way of representing textual data 
-<LI>Build a recurrent neural network for language modeling </LI></UL></DIV>
+<LI>Easily use machine learning in your applications
+<LI>Learn the art of building models using pre-built models and scripts 
+<LI>Deploy machine learning models to any general application
+<LI>Use artificial intelligence in your models
+<LI>Build your first smart iOS/Android application
+<LI>Add intelligent features in your existing applications  </LI></UL></DIV>
 
 ## Instructions and Navigation
 ### Assumed Knowledge
